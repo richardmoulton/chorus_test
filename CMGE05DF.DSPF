@@ -1,0 +1,544 @@
+     A*%%TS  SD  20140521  110504  CARLH       REL-V5R2M0  5722-WDS             
+     A*%%EC                                                                     
+     A                                      DSPSIZ(27 132 *DS4)                 
+     A                                      ALTPAGEUP                           
+     A                                      ALTPAGEDWN                          
+     A                                      ALTHELP                             
+     A                                      WDWBORDER((*COLOR BLU) (*DSPATR RI)-
+     A                                       (*CHAR '        '))                
+     A                                      PRINT                               
+     A                                      INDARA                              
+     A          R CMGE051S                  SFL                                 
+     A  82                                  SFLNXTCHG                           
+     A            S1SLCT         1A  B 10  3                                    
+     A N83                                  DSPATR(HI)                          
+     A  83                                  DSPATR(RI PC)                       
+     A            S1ITEM         3Y 0O 10  6EDTCDE(Z)                           
+     A  40                                  COLOR(BLU)                          
+     A  41                                  COLOR(WHT)                          
+     A  42                                  COLOR(RED)                          
+     A            S1SUSP         1A  O 10 10                                    
+     A  40                                  COLOR(BLU)                          
+     A  41                                  COLOR(WHT)                          
+     A  42                                  COLOR(RED)                          
+     A            S1TYPE         1A  O 10 13                                    
+     A  40                                  COLOR(BLU)                          
+     A  41                                  COLOR(WHT)                          
+     A  42                                  COLOR(RED)                          
+     A***         S1SKIP         3Y 0O 10 12EDTCDE(M)                           
+     A            S1SKIP         3Y 0O 10 17EDTCDE(M)                           
+     A  40                                  COLOR(BLU)                          
+     A  41                                  COLOR(WHT)                          
+     A  42                                  COLOR(RED)                          
+     A***         S1PROD         8A  O 10 17                                    
+     A            S1PROD         8A  O 10 22                                    
+     A  40                                  COLOR(BLU)                          
+     A  41                                  COLOR(WHT)                          
+     A  42                                  COLOR(RED)                          
+     A***         S1DESC        47A  O 10 26                                    
+     A            S1DESC        40A  O 10 31                                    
+     A  40                                  COLOR(BLU)                          
+     A  41                                  COLOR(WHT)                          
+     A  42                                  COLOR(RED)                          
+     A***         S1SUPL         6A  H                                          
+     A            S1SUPL         6A  O 10 72                                    
+     A  86                                  DSPATR(ND)                          
+     A  40                                  COLOR(BLU)                          
+     A  41                                  COLOR(WHT)                          
+     A  42                                  COLOR(RED)                          
+     A            S1SDSC        40A  O 10 79                                    
+     A  86                                  DSPATR(ND)                          
+     A  40                                  COLOR(BLU)                          
+     A  41                                  COLOR(WHT)                          
+     A  42                                  COLOR(RED)                          
+     A***         S1STAT         5A  O 10 74                                    
+     A            S1STAT         5A  O 10120                                    
+     A  40                                  COLOR(BLU)                          
+     A  41                                  COLOR(WHT)                          
+     A  42                                  COLOR(RED)                          
+      *                                                                         
+     A          R CMGE051C                  SFLCTL(CMGE051S)                    
+     A                                      SFLSIZ(0015)                        
+     A                                      SFLPAG(0014)                        
+     A  80                                  SFLDSP                              
+     A  81                                  SFLDSPCTL                           
+     A N80                                  SFLCLR                              
+     A  88                                  SFLEND                              
+     A  90                                  ALARM                               
+     A                                      OVERLAY                             
+     A                                      KEEP                                
+     A N88                                  ROLLUP(89)                          
+     A                                      CF03                                
+     A                                      CF10                                
+     A                                      CF12                                
+     A    N33                               CF16                                
+     A    N33                               CF17                                
+     A                                      CF19                                
+     A  50N33                               CF20                                
+     A                                      CF21                                
+     A***  33                               CF23                                
+     A                                      CF23                                
+     A                                      HELP                                
+     A                                      HLPTITLE('Contract Details')        
+     A          H                           HLPPNLGRP(CMGE050101 CMGPGT)        
+     A                                      HLPARA(01 001 24 080)               
+     A            RCDNBR         4S 0H      SFLRCDNBR(CURSOR)                   
+     A N86                              1  2'CMGE05/1'                          
+     A                                      COLOR(BLU)                          
+     A  86                              1  2'CMGE05/4'                          
+     A                                      COLOR(BLU)                          
+     A            LCNAME        40A  O  1 15DSPATR(HI)                          
+     A                                  1 67'Date'                              
+     A                                      COLOR(GRN)                          
+     A                                  1 72COLOR(GRN)                          
+     A                                      DATE                                
+     A                                      EDTCDE(Y)                           
+     A                                  2 15'Contract Details'                  
+     A                                      DSPATR(HI)                          
+     A                                  2 67'Time'                              
+     A                                      COLOR(GRN)                          
+     A                                  2 72TIME                                
+     A                                      COLOR(GRN)                          
+     A                                  3 67'Stat'                              
+     A                                      COLOR(GRN)                          
+     A            WMODE          8A  O  3 72COLOR(GRN)                          
+     A                                  4  3'Contract number . . .'             
+     A            WHCNTN         7Y 0O  4 25EDTCDE(Z)                           
+     A                                      DSPATR(HI)                          
+                                                                                
+     A  33                              5  2'*** FILTER ACTIVE ***'             
+     A                                      DSPATR(RI)                          
+     A  33        S1FDES        56A  O  5 24DSPATR(RI)                          
+                                                                                
+     A                                  6  2'Type option, press Enter.'         
+     A  86                              6 40'Supplier'                          
+     A  86        ZZSUPL         6A  O  6 49DSPATR(HI)                          
+     A**86        ZZSDSC        20A  O  6 56DSPATR(HI)                          
+     A  86        ZZSDSC        40A  O  6 56DSPATR(HI)                          
+     A                                  7  3'1=Select'                          
+     A***                               8 74'Accept'                            
+     A                                  8120'Accept'                            
+     A                                  9  2'Opt'                               
+     A                                  9  6'Item'                              
+     A***                               9 11'Count'                             
+     A***                               9 17'Product'                           
+     A*N86                              9 47'Supplier'                          
+     A***                               9 74'Status'                            
+     A                                  9 11'Type'                              
+     A                                  9 16'Count'                             
+     A                                  9 22'Product'                           
+     A N86                              9 72'Supplier'                          
+     A                                  9120'Status'                            
+     A*                                                                         
+     A          R CMGE0501                                                      
+     A*%%TS  SD  20140521  110504  CARLH       REL-V5R2M0  5722-WDS             
+     A                                      CHGINPDFT(UL)                       
+     A  79                             24  3'Tab code .'                        
+     A                                      COLOR(BLU)                          
+     A  79        ZZTCOD         2A  B 24 14DSPATR(UL)                          
+     A                                      DSPATR(HI)                          
+     A  79                             24 19'Available:'                        
+     A                                      COLOR(BLU)                          
+     A  79        ZZTCAV        30A  O 24 30DSPATR(HI)                          
+     A                                      COLOR(BLU)                          
+     A                                 25  3'F3=Exit'                           
+     A                                      COLOR(BLU)                          
+     A                                 25 13'F12=Previous'                      
+     A                                      COLOR(BLU)                          
+     A N86N33                          25 28'F16=Suppliers'                     
+     A                                      COLOR(BLU)                          
+     A**86   N33                       22 28'F16=All Items'                     
+     A  86N33                          25 28'F16=All Supps'                     
+     A                                      COLOR(BLU)                          
+     A N48N33                          25 44'F17=Show Completed'                
+     A                                      COLOR(BLU)                          
+     A  48N33                          25 44'F17=Hide Completed'                
+     A                                      COLOR(BLU)                          
+     A                                 26  3'F19=Order Details'                 
+     A                                      COLOR(BLU)                          
+     A                                 26 23'F21=Sales Invoices'                
+     A                                      COLOR(BLU)                          
+     A N85 50N33                       26 44'F20=Show Non-Accepted'             
+     A                                      COLOR(BLU)                          
+     A  85 50N33                       26 44'F20=Hide Non-Accepted'             
+     A                                      COLOR(BLU)                          
+     A***     33                       23 44'F23=Clear Filter'                  
+     A                                 26 68'F23=Show All'                      
+     A                                      COLOR(BLU)                          
+     A            MSG           65A  O 27  3MSGID(USR &MIC &MSGF)               
+     A                                      DSPATR(HI)                          
+     A            MIC            4A  P                                          
+     A            MSGF          10A  P                                          
+     A                                 25 65'F10=Project'                       
+     A                                      COLOR(BLU)                          
+     A*                                                                         
+     A*                                                                         
+     A*                                                                         
+     A*                                                                         
+     A*                                                                         
+     A          R CMGE0502                                                      
+     A                                      CF03                                
+     A                                      CF12                                
+     A                                      CF14                                
+     A                                      CF16                                
+     A                                      CF17                                
+     A                                      CF18                                
+     A                                      CF19                                
+     A                                      HELP                                
+     A                                      CF21                                
+     A                                      KEEP                                
+     A  90                                  ALARM                               
+     A                                      HLPSEQ(CMGE05 02)                   
+     A                                      HLPTITLE('Contract Details Input.') 
+     A          H                           HLPPNLGRP(CMGE050201 CMGPGT)        
+     A                                      HLPARA(01 001 04 080)               
+     A                                  1  2'CMGE05/2'                          
+     A                                      COLOR(BLU)                          
+     A            LCNAME        40A  O  1 15DSPATR(HI)                          
+     A                                  1 67'Date'                              
+     A                                      COLOR(GRN)                          
+     A                                  1 72COLOR(GRN)                          
+     A                                      DATE                                
+     A                                      EDTCDE(Y)                           
+     A                                  2 15'Contract Details'                  
+     A                                      DSPATR(HI)                          
+     A                                  2 67'Time'                              
+     A                                      COLOR(GRN)                          
+     A                                  2 72TIME                                
+     A                                      COLOR(GRN)                          
+     A                                  3 67'Stat'                              
+     A                                      COLOR(GRN)                          
+     A            WMODE          8A  O  3 72COLOR(GRN)                          
+     A                                  3  2'Contract number. .'                
+     A            WHCNTN         7Y 0O  3 21EDTCDE(Z)                           
+     A                                      DSPATR(HI)                          
+     A                                  3 29'/'                                 
+     A            WWITEM         3Y 0O  3 31EDTCDE(Z)                           
+     A                                      DSPATR(HI)                          
+     A            WHSNAM        21A  O  3 35DSPATR(HI)                          
+                                                                                
+     A                                  4  2'Contract type. . .'                
+     A            S2TYPE         1A  O  4 21DSPATR(HI)                          
+     A            S2TDES        20A  O  4 23DSPATR(HI)                          
+                                                                                
+     A                                  4 56'Target Margin'                     
+     A            S2MARG         6Y 3O  4 70EDTCDE(M)                           
+     A                                      DSPATR(HI)                          
+     A                                  4 79'%'                                 
+                                                                                
+     A                                  5  2'Waste type . . . .'                
+     A            WWWTYP         8A  O  5 21DSPATR(HI)                          
+     A            WWWDES        40A  O  5 30DSPATR(HI)                          
+     A                                  6  2'Product. . . . . .'                
+     A            WWPROD         8A  O  6 21DSPATR(HI)                          
+     A            WWPDSC        40A  O  6 30DSPATR(HI)                          
+     A                                  7  2'Supplier . . . . .'                
+     A            WWSUPL         6A  O  7 21DSPATR(HI)                          
+     A            WWSDSC        20A  O  7 28DSPATR(HI)                          
+     A                                  7 49'Reg.'                              
+     A            WWCREG        11A  O  7 54DSPATR(HI)                          
+     A                                  7 66'Expiry'                            
+     A            WWCRXT         6Y 0O  7 73DSPATR(HI)                          
+     A                                      EDTCDE(5)                           
+     A                                  8  2'Contact. . . . . .'                
+     A            WWSCON        20A  O  8 21DSPATR(HI)                          
+     A                                  8 42'Tel'                               
+     A            WWSTEL        15A  O  8 46DSPATR(HI)                          
+     A                                  8 62'Fax'                               
+     A            WWSFAX        15A  O  8 66DSPATR(HI)                          
+     A                                  9  2'Initial movement .'                
+     A                                  9 21'Quantity'                          
+     A            WWIMQT         2Y 0O  9 30DSPATR(HI)                          
+     A                                      EDTCDE(Z)                           
+     A                                  9 33'Code'                              
+     A            WWIMCD    R        O  9 38REFFLD(CMGCW/CWIMCD *LIBL/CMGCW)    
+     A                                      DSPATR(HI)                          
+     A                                  9 41'Date'                              
+     A            WWIMDT    R    6S00O  9 46REFFLD(CMGCW/CWIMDT *LIBL/CMGCW)    
+     A                                      DSPATR(HI)                          
+     A                                      EDTCDE(5)                           
+     A                                  9 55'ETA'                               
+     A            WWETAI         4Y 0O  9 59EDTWRD('  :  ')                     
+     A                                      DSPATR(HI)                          
+     A  38                             10  2'**CURRENT PRICES**'                
+     A                                      DSPATR(RI)                          
+     A                                 10 31'Costs'                             
+     A            WWCEOF         1A  O 10 37DSPATR(HI)                          
+     A                                 10 39'(E/F/R)'                           
+     A                                 10 47'Margin%'                           
+     A                                 10 55'Sales'                             
+     A            WWSEOF         1A  O 10 61DSPATR(HI)                          
+     A                                 10 63'(E/F/R)'                           
+     A                                 10 71'Margin%'                           
+     A                                 11  2'Basic Price. . . . . '             
+     A            WWCBAS        11Y 2O 11 33DSPATR(HI)                          
+     A                                      EDTCDE(M)                           
+     A            WWCBAM         6Y 3O 11 47DSPATR(HI)                          
+     A                                      EDTCDE(M)                           
+     A            WWSBAS        11Y 2O 11 57DSPATR(HI)                          
+     A                                      EDTCDE(M)                           
+     A            WWSBAM         6Y 3O 11 71DSPATR(HI)                          
+     A                                      EDTCDE(M)                           
+     A            S2LBL1        30A    12  2                                    
+     A            WWCWIN        11Y 2O 12 33DSPATR(HI)                          
+     A                                      EDTCDE(M)                           
+     A            WWSWIN        11Y 2O 12 57DSPATR(HI)                          
+     A                                      EDTCDE(M)                           
+     A            S2LBL2        30A    13  2                                    
+     A            WWCRPT        11Y 2O 13 33DSPATR(HI)                          
+     A                                      EDTCDE(M)                           
+     A            WWCRPM         6Y 3O 13 47DSPATR(HI)                          
+     A                                      EDTCDE(M)                           
+     A            WWSRPT        11Y 2O 13 57DSPATR(HI)                          
+     A                                      EDTCDE(M)                           
+     A            WWSRPM         6Y 3O 13 71DSPATR(HI)                          
+     A                                      EDTCDE(M)                           
+                                                                                
+     A            S2LBL3        30A    14  2                                    
+     A            WWPRVL         7Y 2O 14 33DSPATR(HI)                          
+     A                                      EDTCDE(M)                           
+     A            WWPRT1        10A  O 14 43DSPATR(HI)                          
+     A            WWSRVL         7Y 2O 14 57DSPATR(HI)                          
+     A                                      EDTCDE(M)                           
+     A            WWSRT1        10A  O 14 67DSPATR(HI)                          
+     A  74                             16  2'Order numbers req.'                
+     A  74        WWONRQ         1A  O 16 21DSPATR(HI)                          
+     A  74                             16 23'(C, D, I or M)'                    
+     A            WWPRT2        10A  O 15 43DSPATR(HI)                          
+     A            WWSRT2        10A  O 15 67DSPATR(HI)                          
+     A  91                             18 44'Disposal'                          
+     A  91        WWCODE         6A  O 18 53DSPATR(HI)                          
+     A  91        WWDESC        21A  O 18 60DSPATR(HI)                          
+     A  92        S2LBL4        30A    18  2                                    
+     A  92        WWESTW         9Y 2O 18 33DSPATR(HI)                          
+     A                                      EDTCDE(4)                           
+     A  93        S2LBL5        30A    19  2                                    
+     A  93        WWAPPL         5Y 0O 19 33DSPATR(HI)                          
+     A                                      EDTCDE(4)                           
+     A  94                             19 44'EWC Number'                        
+     A  94        WWEWCN         6Y 0O 19 55DSPATR(HI)                          
+     A  79                             21  3'Tab code .'                        
+     A                                      COLOR(BLU)                          
+     A  79        ZZTCOD         2A  B 21 14DSPATR(UL)                          
+     A                                      DSPATR(HI)                          
+     A  79                             21 19'Available:'                        
+     A                                      COLOR(BLU)                          
+     A  79        ZZTCAV        30A  O 21 30DSPATR(HI)                          
+     A                                      COLOR(BLU)                          
+     A                                 22  3'F3=Exit'                           
+     A                                      COLOR(BLU)                          
+     A                                 22 13'F12=Previous'                      
+     A                                      COLOR(BLU)                          
+     A                                 22 28'F16=Sales Price History'           
+     A                                      COLOR(BLU)                          
+     A                                 22 54'F17=Cost Price History'            
+     A                                      COLOR(BLU)                          
+     A                                 23  3'F18=Schedule'                      
+     A                                      COLOR(BLU)                          
+     A                                 23 16'F14=Comments'                      
+     A                                      COLOR(BLU)                          
+     A                                 23 30'F19=Order Details'                 
+     A                                      COLOR(BLU)                          
+     A                                 23 54'F21=Special Instructions'          
+     A                                      COLOR(BLU)                          
+     A            MSG           65A  O 24  3MSGID(USR &MIC &MSGF)               
+     A                                      DSPATR(HI)                          
+     A            MIC            4A  P                                          
+     A            MSGF          10A  P                                          
+     A*                                                                         
+     A*                                                                         
+     A*                                                                         
+     A          R CMGE053S                  SFL                                 
+     A  82                                  SFLNXTCHG                           
+     A            S3SLCT         1A  B 10  3                                    
+     A N83                                  DSPATR(HI)                          
+     A  83                                  DSPATR(RI PC)                       
+     A            S3SUPL         6   O 10  6DSPATR(HI)                          
+     A            S3DESC        40   O 10 15DSPATR(HI)                          
+     A*                                                                         
+     A          R CMGE053C                  SFLCTL(CMGE053S)                    
+     A                                      SFLSIZ(0012)                        
+     A                                      SFLPAG(0011)                        
+     A  80                                  SFLDSP                              
+     A  81                                  SFLDSPCTL                           
+     A N80                                  SFLCLR                              
+     A  88                                  SFLEND                              
+     A  90                                  ALARM                               
+     A                                      OVERLAY                             
+     A                                      KEEP                                
+     A N88                                  ROLLUP(89)                          
+     A                                      CF03                                
+     A                                      CF12                                
+     A                                      CF19                                
+     A                                      HELP                                
+     A                                      HLPTITLE('Contract Details')        
+     A          H                           HLPPNLGRP('CMGE050301' CMGPGT)      
+     A                                      HLPARA(01 001 24 080)               
+     A            RCDNB3         4S 0H      SFLRCDNBR(CURSOR)                   
+     A                                  1  2'CMGE05/3'                          
+     A                                      COLOR(BLU)                          
+     A            LCNAME        40A  O  1 15DSPATR(HI)                          
+     A                                  1 67'Date'                              
+     A                                      COLOR(GRN)                          
+     A                                  1 72COLOR(GRN)                          
+     A                                      DATE                                
+     A                                      EDTCDE(Y)                           
+     A                                  2 15'Contract Details'                  
+     A                                      DSPATR(HI)                          
+     A                                  2 67'Time'                              
+     A                                      COLOR(GRN)                          
+     A                                  2 72TIME                                
+     A                                      COLOR(GRN)                          
+     A                                  3 67'Stat'                              
+     A                                      COLOR(GRN)                          
+     A            WMODE          8A     3 72                                    
+     A                                      COLOR(GRN)                          
+     A*                                                                         
+     A                                  4  3'Contract number . . .'             
+     A            WHCNTN         7  0O  4 25                                    
+     A                                      EDTCDE(Z)                           
+     A                                      DSPATR(HI)                          
+                                                                                
+     A                                  6  3'Type option, press Enter. '        
+     A                                  7  4'1=Select'                          
+     A                                  9  2'Opt'                               
+     A                                  9  6'Supplier'                          
+     A*                                                                         
+     A          R CMGE0503                                                      
+     A                                      CHGINPDFT(UL)                       
+     A                                 22  3'Roll'                              
+     A                                      COLOR(BLU)                          
+     A                                 22 22'F3=Exit'                           
+     A                                      COLOR(BLU)                          
+     A                                 22 41'F12=Previous'                      
+     A                                      COLOR(BLU)                          
+     A                                 23  3'F19=Order Details'                 
+     A                                      COLOR(BLU)                          
+     A            MSG           65A  O 24  3MSGID(USR &MIC XAPMSG)              
+     A                                      DSPATR(HI)                          
+     A            MIC            4A  P                                          
+     A*                                                                         
+     A*                                                                         
+     A*                                                                         
+     A*                                                                         
+     A          R CMGE055S                  SFL                                 
+     A*%%TS  SD  20050131  153304  RICHARDM    REL-V4R4M0  5769-PW1             
+     A  82                                  SFLNXTCHG                           
+     A            S5SLCT         1A  B 11  3                                    
+     A N83                                  DSPATR(HI)                          
+     A  83                                  DSPATR(RI)                          
+     A  83                                  DSPATR(PC)                          
+     A            S5MDSC        20A  O 11  6DSPATR(HI)                          
+     A            S5MVNO         5Y 0O 11 11DSPATR(HI)                          
+     A                                      EDTCDE(Z)                           
+     A            S5MVDT         6Y 0O 11 27DSPATR(HI)                          
+     A                                      EDTCDE(5)                           
+     A            S5BOOK         7Y 0O 11 36DSPATR(HI)                          
+     A                                      EDTCDE(4)                           
+     A            S5VALU        11Y 2O 11 44DSPATR(HI)                          
+     A                                      EDTCDE(M)                           
+     A            S5RECD         1A  O 11 60DSPATR(HI)                          
+     A            S5SCND         1A  O 11 68DSPATR(HI)                          
+     A            S5INVD         1A  O 11 75DSPATR(HI)                          
+     A            S5PICT         1A  O 11 78DSPATR(HI)                          
+     A*                                                                         
+     A          R CMGE055C                  SFLCTL(CMGE055S)                    
+     A*%%TS  SD  20050131  153304  RICHARDM    REL-V4R4M0  5769-PW1             
+     A                                      SFLSIZ(0011)                        
+     A                                      SFLPAG(0010)                        
+     A  80                                  SFLDSP                              
+     A  81                                  SFLDSPCTL                           
+     A N80                                  SFLCLR                              
+     A  88                                  SFLEND                              
+     A                                      SFLCSRRRN(&POSN)                    
+     A  90                                  ALARM                               
+     A                                      OVERLAY                             
+     A                                      KEEP                                
+     A N88                                  ROLLUP(89)                          
+     A                                      CF03                                
+     A                                      CF12                                
+     A                                      CF19                                
+     A                                      HELP                                
+     A                                      HLPTITLE('Contract Details')        
+     A          H                           HLPPNLGRP(CMGE050501 CMGPGT)        
+     A                                      HLPARA(01 001 24 080)               
+     A            RCDNB5         4S 0H      SFLRCDNBR(CURSOR)                   
+     A            POSN           5S 0H                                          
+     A                                  1  2'CMGE05/5'                          
+     A                                      COLOR(BLU)                          
+     A            LCNAME        40A  O  1 15DSPATR(HI)                          
+     A                                  1 67'Date'                              
+     A                                      COLOR(GRN)                          
+     A                                  1 72COLOR(GRN)                          
+     A                                      DATE                                
+     A                                      EDTCDE(Y)                           
+     A                                  2 15'Contract Details'                  
+     A                                      DSPATR(HI)                          
+     A                                  2 67'Time'                              
+     A                                      COLOR(GRN)                          
+     A                                  2 72TIME                                
+     A                                      COLOR(GRN)                          
+     A                                  3 67'Stat'                              
+     A                                      COLOR(GRN)                          
+     A            WMODE          8A  O  3 72COLOR(GRN)                          
+     A                                  4  3'Contract number . . .'             
+     A            WHCNTN         7Y 0O  4 25EDTCDE(Z)                           
+     A                                      DSPATR(HI)                          
+                                                                                
+     A                                  5  3'Contract item . . . .'             
+     A            WWITEM         3Y 0O  5 25EDTCDE(Z)                           
+     A                                      DSPATR(HI)                          
+     A                                  7  2'Type option, press Enter.'         
+     A                                  8  3'1=Select'                          
+     A                                  8 13'6=Confirmation Audit'              
+     A                                  8 35'7=Reprint Confirmation'            
+     A                                 10  2'Opt'                               
+     A                                 10  6'Description'                       
+     A                                 10 29'Date'                              
+     A                                 10 35'Audit Ref'                         
+     A                                 10 51'Value'                             
+     A                                 10 58'Rec''d'                            
+     A                                 10 65'Scan''d'                           
+     A                                 10 73'Inv''d'                            
+     A*                                                                         
+     A          R CMGE0505                                                      
+     A                                      CHGINPDFT(UL)                       
+     A  79                             21  3'Tab code .'                        
+     A                                      COLOR(BLU)                          
+     A  79        ZZTCOD         2A  B 21 14DSPATR(UL)                          
+     A                                      DSPATR(HI)                          
+     A  79                             21 19'Available:'                        
+     A                                      COLOR(BLU)                          
+     A  79        ZZTCAV        30A  O 21 30DSPATR(HI)                          
+     A                                      COLOR(BLU)                          
+     A                                 22  3'Roll'                              
+     A                                      COLOR(BLU)                          
+     A                                 22 22'F3=Exit'                           
+     A                                      COLOR(BLU)                          
+     A                                 22 41'F12=Previous'                      
+     A                                      COLOR(BLU)                          
+     A                                 23  3'F19=Order Details'                 
+     A                                      COLOR(BLU)                          
+     A*                                                                         
+     A            MSG           65A  O 24  3MSGID(USR &MIC XAPMSG)              
+     A                                      DSPATR(HI)                          
+     A            MIC            4A  P                                          
+     A          R CMGE0506                                                      
+     A*%%TS  SD  20080623  085858  CARLH       REL-V4R4M0  5769-PW1             
+     A                                      CF12                                
+     A                                      KEEP                                
+     A  90                                  ALARM                               
+     A                                      OVERLAY                             
+     A                                      WINDOW(7 7 8 68)                    
+     A            S06CNT         7  0O  2  1                                    
+     A            S06ITM         3  0O  2  9                                    
+     A            S06MOV         5  0O  2 13                                    
+     A            S06PIC         3  0O  2 66                                    
+     A            S06PT1        68   O  4  1                                    
+     A            S06PT2        68   O  5  1                                    
+     A            S06PT3        68   O  6  1                                    
+     A            S06PT4        51   O  7  1                                    
+     A          R CMGE05ZZ                                                      
+     A*%%TS  SD  20071219  160550  ALISTAIRT   REL-V4R4M0  5769-PW1             
+     A                                      ASSUME                              
+     A                                  1  3' ' 

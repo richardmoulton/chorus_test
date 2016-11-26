@@ -6,8 +6,7 @@
      F* Copyright. . . . . . Chorus Software Limited 1999                      *
      F* Program Name . . . . CMGE04                                            *
      F* Program Date . . . . 24/11/99                                          *
-     F* Title. . . . . . . . Contract Enquiry                                  *
-     F* Release level. . . . 400.4                                       *
+     F* Title. . . . . . . . Contract enquiry
      F**************************************************************************
       * NOTES:
       *      PARAMETER Z#LR:
@@ -26,6 +25,7 @@ BS01 FCMGCHS00  IF   E           K DISK
      FCMGLC00   IF   E           K DISK
      FCMGLCX00  IF   E           K DISK
      FCMGRC00   IF   E           K DISK
+     FCMGRCX00  IF   E           K DISK     
 
       **************************************************************************
       * Declare fields

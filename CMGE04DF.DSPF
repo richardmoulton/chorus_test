@@ -1,0 +1,373 @@
+     A*%%TS  SD  20140521  110420  CARLH       REL-V5R2M0  5722-WDS
+     A*%%EC
+     A                                      DSPSIZ(24 80 *DS3)
+     A                                      ALTHELP
+     A                                      WDWBORDER((*COLOR BLU) (*DSPATR RI)-
+     A                                       (*CHAR '        '))
+     A                                      PRINT
+     A                                      INDARA
+     A*
+     A*
+     A          R CMGE0401
+     A*%%TS  SD  20140521  110420  CARLH       REL-V5R2M0  5722-WDS
+     A                                      CF03
+     A                                      CF10
+     A                                      CF12
+     A*                                      CF15
+     A                                      CF17
+     A                                      CF19
+     A                                      CF20
+     A                                      HELP
+     A                                      KEEP
+     A  90                                  ALARM
+     A                                      HLPSEQ(CMGE04 01)
+     A                                      HLPTITLE('Contract Details Input.')
+     A          H                           HLPPNLGRP(CMGE040101 CMGPGT)
+     A                                      HLPARA(04 001 04 080)
+     A                                  1  2'CMGE04/1'
+     A                                      COLOR(BLU)
+     A            LCNAME        40A  O  1 15DSPATR(HI)
+     A                                  1 67'Date'
+     A                                      COLOR(GRN)
+     A                                  1 72COLOR(GRN)
+     A                                      DATE
+     A                                      EDTCDE(Y)
+     A                                  2 15'Contract Details'
+     A                                      DSPATR(HI)
+     A                                  2 34'REFER TO CREDIT CONTROL'
+     A  95                                  DSPATR(BL)
+     A                                      COLOR(RED)
+     A N95                                  DSPATR(ND)
+     A                                  2 67'Time'
+     A                                      COLOR(GRN)
+     A                                  2 72TIME
+     A                                      COLOR(GRN)
+     A                                  3 67'Stat'
+     A                                      COLOR(GRN)
+     A            WMODE          8A  O  3 72COLOR(GRN)
+     A                                  3  3'Contract number .'
+     A            WHCNTN         7Y 0O  3 21EDTCDE(Z)
+     A                                      DSPATR(HI)
+     A                                  3 29'Default'
+     A            WHTYPE         1A  O  3 37DSPATR(HI)
+     A            WHTDSC        20A  O  3 39DSPATR(HI)
+     A*                                  4 61'Prospect .'
+     A*            WHPRCD         8A  O  4 72DSPATR(HI)
+     A                                  4  3'Customer account. . .'
+     A            WHCCOD         6A  O  4 25DSPATR(HI)
+     A            WHCSUB         3A  O  4 32DSPATR(HI)
+     A            WHCNAM        40A  O  4 36DSPATR(HI)
+     A                                  5  3'Customer address. . .'
+     A            WHCADD       136A  O  5 25DSPATR(HI)
+     A*            WHCAD1        35A  O  6 25DSPATR(HI)
+     A*            WHCAD2        35A  O  7  3DSPATR(HI)
+     A*            WHCAD3        35A  O  7 40DSPATR(HI)
+     A*            WHCAD4        35A  O  8  3DSPATR(HI)
+     A*            WHCPCD        10A  O  8 40DSPATR(HI)
+     A                                  7  3'Customer contact. . .'
+     A            WHCCON        20A  O  7 25DSPATR(HI)
+     A                                  7 46'Tel.'
+     A            WHCTEL        15A  O  7 51DSPATR(HI)
+     A                                  8  3'Site town/area. . . .'
+     A            WHSTWN        30A  O  8 25DSPATR(HI)
+     A                                  9  3'Full site address . .'
+     A            WHSNAM        40A  O  9 25DSPATR(HI)
+     A            WHSAD1        35A  O 10  3DSPATR(HI)
+     A            WHSAD2        35A  O 10 40DSPATR(HI)
+     A            WHSAD3        35A  O 11  3DSPATR(HI)
+     A                                 12  3'County. . . . . . . .'
+     A            WHSAD4        35A  O 12 25DSPATR(HI)
+     A            WHSPCD        10A  O 12 61DSPATR(HI)
+     A                                 13  3'Site contact. . . . .'
+     A            WHSCON        20A  O 13 25DSPATR(HI)
+     A                                 13 46'Tel.'
+     A            WHSTEL        15A  O 13 51DSPATR(HI)
+     A                                 14  3'Site Email. . . . . .'
+     A            WHSEML        80A  O 14 25DSPATR(HI)
+     A                                 16  3'Expected Duration . .'
+     A            WHESDT         6Y 0O 16 25EDTCDE(5)
+     A                                      DSPATR(HI)
+     A                                 16 34'to'
+     A            WHEEDT         6Y 0O 16 37EDTCDE(5)
+     A                                      DSPATR(HI)
+     A                                 17  3'Comments . . . . . . . . .'
+     A            CHCOM1        40A  O 17 30DSPATR(HI)
+     A            CHCOM2        40A  O 18 30DSPATR(HI)
+     A            CHCOM3        40A  O 19 30DSPATR(HI)
+     A            CHCOM4        40A  O 20 30DSPATR(HI)
+     A  79                             21  3'Tab code .'
+     A                                      COLOR(BLU)
+     A  79        ZZTCOD         2A  B 21 14DSPATR(UL)
+     A                                      DSPATR(HI)
+     A  79                             21 19'Available:'
+     A                                      COLOR(BLU)
+     A  79        ZZTCAV        30A  O 21 30DSPATR(HI)
+     A                                      COLOR(BLU)
+     A                                 22  3'F3=Exit'
+     A                                      COLOR(BLU)
+     A                                 22 13'F12=Previous'
+     A                                      COLOR(BLU)
+     A*                                 22 28'F15=Prospect Details'
+     A*                                      COLOR(BLU)
+     A                                 22 51'F17=Contract Tracking'
+     A                                      COLOR(BLU)
+     A                                 23  3'F19=Order Details'
+     A                                      COLOR(BLU)
+     A                                 23 23'F20=Sales Analysis'
+     A                                      COLOR(BLU)
+     A            MSG           65A  O 24  3MSGID(USR &MIC &MSGF)
+     A                                      DSPATR(HI)
+     A            MIC            4A  P
+     A            MSGF          10A  P
+     A                                 23 44'F10=Project'
+     A                                      COLOR(BLU)
+     A*
+     A*
+     A*
+     A          R CMGE0402
+     A                                      CF03
+     A                                      CF10
+     A                                      CF12
+     A                                      CF17
+     A                                      CF19
+     A                                      CF20
+     A                                      HELP
+     A                                      KEEP
+     A  90                                  ALARM
+     A                                      HLPSEQ(CMGE04 02)
+     A                                      HLPTITLE('Contract Details Input.')
+     A          H                           HLPPNLGRP(CMGE040201 CMGPGT)
+     A                                      HLPARA(04 001 04 080)
+     A                                  1  2'CMGE04/2'
+     A                                      COLOR(BLU)
+     A            LCNAME        40A  O  1 15DSPATR(HI)
+     A                                  1 67'Date'
+     A                                      COLOR(GRN)
+     A                                  1 72COLOR(GRN)
+     A                                      DATE
+     A                                      EDTCDE(Y)
+     A                                  2 15'Contract Details'
+     A                                      DSPATR(HI)
+     A                                  2 67'Time'
+     A                                      COLOR(GRN)
+     A                                  2 72TIME
+     A                                      COLOR(GRN)
+     A                                  3 67'Stat'
+     A                                      COLOR(GRN)
+     A            WMODE          8A  O  3 72COLOR(GRN)
+     A                                  4  3'Contract number . . . .'
+     A            WHCNTN         7Y 0O  4 27EDTCDE(Z)
+     A                                      DSPATR(HI)
+     A*                                  5  3'Prospect. . . . . . .'
+     A*            WHPRCD         8A  O  5 25DSPATR(HI)
+     A                                  5  3'Customer account. . . .'
+     A            WHCCOD         6A  O  5 27DSPATR(HI)
+     A            WHCSUB         3A  O  5 34DSPATR(HI)
+     A            WHCNAM        40A  O  5 38DSPATR(HI)
+     A                                  4 51'REFER TO CREDIT CONTROL'
+     A  95                                  DSPATR(BL)
+     A                                      COLOR(RED)
+     A N95                                  DSPATR(ND)
+     A                                  6  3'Site town/area. . . . .'
+     A            WHSTWN        30A  O  6 27DSPATR(HI)
+     A                                  7  3'Site name . . . . . . .'
+     A            WHSNAM        40A  O  7 27DSPATR(HI)
+     A                                  9  3'Maintain Permit Details'
+     A            WHMPDF         1A  O  9 27DSPATR(HI)
+     A                                  9 29'(C, I or blank)'
+     A                                 10  3'On Road . . . . . . . .'
+     A            WHONRD         1A  O 10 27DSPATR(HI)
+     A                                 10 29'(Y or blank)'
+     A*                                 10  3'Permit Required . . .'
+     A*            WHPRQD         1A  O 10 25DSPATR(HI)
+     A                                 11  3'Permit Obtained . . . .'
+     A            WHPRES        20A  O 11 27DSPATR(HI)
+     A                                 12  3'Permit Expiry Date. . .'
+     A            WHPEDT         6Y 0O 12 27DSPATR(HI)
+     A                                      EDTCDE(5)
+     A*                                 13  3'POD Required. . . . .'
+     A*            WHPODL         1A  O 13 25DSPATR(HI)
+     A                                 13  3'Invoice once complete .'
+     A            WHIONC         1A  O 13 27DSPATR(HI)
+     A                                 13 29'(Y or blank)'
+     A*                                 14  3'Invoice at movement .'
+     A*            WHINVL         1A  O 14 25DSPATR(HI)
+     A*                                 14 27'(M or blank)'
+     A                                 14  3'Order numbers reqd. . .'
+     A            WHONRQ         1A  O 14 27DSPATR(HI)
+     A                                 14 29'(C, D, I, M, X or blank)'
+     A  41                             15  3'Start date. . . . . . .'
+     A            WHSDAT         6Y 0O 15 27EDTCDE(5)
+     A                                      DSPATR(HI)
+     A  42                             16  3'End date. . . . . . .'
+     A            WHEDAT         6Y 0O 16 27EDTCDE(5)
+     A                                      DSPATR(HI)
+     A                                 17  3'Site waste MGT plan required. .'
+     A            WHSWMR         1A  O 17 35DSPATR(HI)
+     A                                 18  3'Site waste MGT plan complete. .'
+     A            WHSWMC         1A  O 18 35DSPATR(HI)
+
+     A  46                             17 50'Reason for rejection'
+     A  46        WHRCOD         4A  O 17 71DSPATR(HI)
+     A  46        WHDESC        30A  O 18 50DSPATR(HI)
+
+     A                                 19  3'Hazardous waste premises code .'
+     A            WHHWPC         6A  O 19 35DSPATR(HI)
+     A                                 20  3'Expiry date . . . . . . . . . .'
+     A            WHHWPX         6Y 0O 20 35DSPATR(HI)
+     A                                      EDTCDE(5)
+     A  79                             21  3'Tab code .'
+     A                                      COLOR(BLU)
+     A  79        ZZTCOD         2A  B 21 14DSPATR(UL)
+     A                                      DSPATR(HI)
+     A  79                             21 19'Available:'
+     A                                      COLOR(BLU)
+     A  79        ZZTCAV        30A  O 21 30DSPATR(HI)
+     A                                      COLOR(BLU)
+     A                                 22  3'F3=Exit'
+     A                                      COLOR(BLU)
+     A                                 22 22'F12=Previous'
+     A                                      COLOR(BLU)
+     A                                 22 41'F17=Contract Tracking'
+     A                                      COLOR(BLU)
+     A                                 23  3'F19=Order Details'
+     A                                      COLOR(BLU)
+     A                                 23 23'F20=Sales Analysis'
+     A                                      COLOR(BLU)
+     A            MSG           65A  O 24  3MSGID(USR &MIC &MSGF)
+     A                                      DSPATR(HI)
+     A            MIC            4A  P
+     A            MSGF          10A  P
+     A                                 23 44'F10=Project'
+     A                                      COLOR(BLU)
+     A*
+     A*
+     A*
+     A*
+     A          R CMGE0403
+     A                                      HLPSEQ(CMGE04 03)
+     A  90                                  ALARM
+     A                                      KEEP
+     A                                      CF03
+     A                                      CF12
+     A                                      CF19
+     A                                      HELP
+     A                                      HLPTITLE('Contract Details Input.')
+     A          H                           HLPPNLGRP(CMGE040301 CMGPGT)
+     A                                      HLPARA(11 001 20 080)
+     A                                  1  2'CMGE04/3'
+     A                                      COLOR(BLU)
+     A            LCNAME        40A  O  1 15DSPATR(HI)
+     A                                  1 67'Date'
+     A                                      COLOR(GRN)
+     A                                  1 72COLOR(GRN)
+     A                                      DATE
+     A                                      EDTCDE(Y)
+     A                                  2 15'Contract Details'
+     A                                      DSPATR(HI)
+     A                                  2 67'Time'
+     A                                      COLOR(GRN)
+     A                                  2 72TIME
+     A                                      COLOR(GRN)
+     A                                  3 67'Stat'
+     A                                      COLOR(GRN)
+     A            WMODE          8A  O  3 72COLOR(GRN)
+     A                                  4  3'Contract number . . .'
+     A            WHCNTN         7Y 0O  4 25EDTCDE(Z)
+     A                                      DSPATR(HI)
+
+     A                                  5  3'Prospect. . . . . . .'
+     A            WHPRCD         8A  O  5 25DSPATR(HI)
+     A                                  6  3'Customer account. . .'
+     A            WHCCOD         6A  O  6 25DSPATR(HI)
+     A            WHCSUB         3A  O  6 32DSPATR(HI)
+     A            WHCNAM        40A  O  6 36DSPATR(HI)
+     A                                  5 51'REFER TO CREDIT CONTROL'
+     A  95                                  DSPATR(BL)
+     A                                      COLOR(RED)
+     A N95                                  DSPATR(ND)
+     A                                  7  3'Site town/area. . . .'
+     A            WHSTWN        30A  O  7 25DSPATR(HI)
+     A                                  9  3'Contract Analysis'
+     A            ZCA01         10A  O 11  3
+     A            WHA01          4A  O 11 19DSPATR(HI)
+     A            ADA01         15A  O 11 25DSPATR(HI)
+     A            ZCA02         10A  O 11 42
+     A            WHA02          4A  O 11 58DSPATR(HI)
+     A            ADA02         15A  O 11 64DSPATR(HI)
+     A            ZCA03         10A  O 12  3
+     A            WHA03          4A  O 12 19DSPATR(HI)
+     A            ADA03         15A  O 12 25DSPATR(HI)
+     A            ZCA04         10A  O 12 42
+     A            WHA04          4A  O 12 58DSPATR(HI)
+     A            ADA04         15A  O 12 64DSPATR(HI)
+     A            ZCA05         10A  O 13  3
+     A            WHA05          4A  O 13 19DSPATR(HI)
+     A            ADA05         15A  O 13 25DSPATR(HI)
+     A            ZCA06         10A  O 13 42
+     A            WHA06          4A  O 13 58DSPATR(HI)
+     A            ADA06         15A  O 13 64DSPATR(HI)
+     A            ZCA07         10A  O 14  3
+     A            WHA07          4A  O 14 19DSPATR(HI)
+     A            ADA07         15A  O 14 25DSPATR(HI)
+     A            ZCA08         10A  O 14 42
+     A            WHA08          4A  O 14 58DSPATR(HI)
+     A            ADA08         15A  O 14 64DSPATR(HI)
+     A            ZCA09         10A  O 15  3
+     A            WHA09          4A  O 15 19DSPATR(HI)
+     A            ADA09         15A  O 15 25DSPATR(HI)
+     A            ZCA10         10A  O 15 42
+     A            WHA10          4A  O 15 58DSPATR(HI)
+     A            ADA10         15A  O 15 64DSPATR(HI)
+     A            ZCA11         10A  O 16  3
+     A            WHA11          4A  O 16 19DSPATR(HI)
+     A            ADA11         15A  O 16 25DSPATR(HI)
+     A            ZCA12         10A  O 16 42
+     A            WHA12          4A  O 16 58DSPATR(HI)
+     A            ADA12         15A  O 16 64DSPATR(HI)
+     A            ZCA13         10A  O 17  3
+     A            WHA13          4A  O 17 19DSPATR(HI)
+     A            ADA13         15A  O 17 25DSPATR(HI)
+     A            ZCA14         10A  O 17 42
+     A            WHA14          4A  O 17 58DSPATR(HI)
+     A            ADA14         15A  O 17 64DSPATR(HI)
+     A            ZCA15         10A  O 18  3
+     A            WHA15          4A  O 18 19DSPATR(HI)
+     A            ADA15         15A  O 18 25DSPATR(HI)
+     A            ZCA16         10A  O 18 42
+     A            WHA16          4A  O 18 58DSPATR(HI)
+     A            ADA16         15A  O 18 64DSPATR(HI)
+     A            ZCA17         10A  O 19  3
+     A            WHA17          4A  O 19 19DSPATR(HI)
+     A            ADA17         15A  O 19 25DSPATR(HI)
+     A            ZCA18         10A  O 19 42
+     A            WHA18          4A  O 19 58DSPATR(HI)
+     A            ADA18         15A  O 19 64DSPATR(HI)
+     A            ZCA19         10A  O 20  3
+     A            WHA19          4A  O 20 19DSPATR(HI)
+     A            ADA19         15A  O 20 25DSPATR(HI)
+     A            ZCA20         10A  O 20 42
+     A            WHA20          4A  O 20 58DSPATR(HI)
+     A            ADA20         15A  O 20 64DSPATR(HI)
+     A  79                             21  3'Tab code .'
+     A                                      COLOR(BLU)
+     A  79        ZZTCOD         2A  B 21 14DSPATR(UL)
+     A                                      DSPATR(HI)
+     A  79                             21 19'Available:'
+     A                                      COLOR(BLU)
+     A  79        ZZTCAV        30A  O 21 30DSPATR(HI)
+     A                                      COLOR(BLU)
+     A                                 22  3'F3=Exit'
+     A                                      COLOR(BLU)
+     A                                 22 22'F12=Previous'
+     A                                      COLOR(BLU)
+     A                                 23  3'F19=Order Details'
+     A                                      COLOR(BLU)
+     A            MSG           65A  O 24  3MSGID(USR &MIC &MSGF)
+     A                                      DSPATR(HI)
+     A            MIC            4A  P
+     A            MSGF          10A  P
+     A*
+     A*
+     A*
+     A*

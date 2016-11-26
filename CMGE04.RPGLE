@@ -7,7 +7,6 @@
      F* Program Name . . . . CMGE04                                            *
      F* Program Date . . . . 24/11/99                                          *
       //@@TITLE: Contract Enquiry
-     F* Release level. . . . 400.4                                       *
      F**************************************************************************
       * NOTES:
       *      PARAMETER Z#LR:
@@ -29,7 +28,8 @@ BS01 FCMGCHS00  IF   E           K DISK
      FCMGLC00   IF   E           K DISK
      FCMGLCX00  IF   E           K DISK
 
-      //FCMGRC00   IF   E           K DISK
+     FCMGRC00   IF   E           K DISK
+     FCMGRCX00  IF   E           K DISK     
 
       **************************************************************************
       * Declare fields

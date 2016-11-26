@@ -1,0 +1,62 @@
+/***         PGM  PARM(&CNTN &F3KY)***/                                         
+             PGM        PARM(&CNTN &F3KY &LR &TCDS &TCOD &TFUN &FTCD &ITEM +    
+                          &MVNO &ENTRYMODE)                                     
+                                                                                
+             DCL        VAR(&CNTN) TYPE(*CHAR) LEN(7)                           
+             DCL        VAR(&F3KY) TYPE(*CHAR) LEN(3)                           
+             DCL        VAR(&LR) TYPE(*CHAR) LEN(1)                             
+             DCL        VAR(&TCDS) TYPE(*CHAR) LEN(20)                          
+             DCL        VAR(&TCOD) TYPE(*CHAR) LEN(2)                           
+             DCL        VAR(&TFUN) TYPE(*CHAR) LEN(10)                          
+             DCL        VAR(&FTCD) TYPE(*CHAR) LEN(2)                           
+             DCL        VAR(&ITEM) TYPE(*CHAR) LEN(3)                           
+             DCL        VAR(&MVNO) TYPE(*CHAR) LEN(5)                           
+             DCL        VAR(&DLIB) TYPE(*CHAR) LEN(10)                          
+             DCL        VAR(&ENTRYMODE) TYPE(*CHAR) LEN(5)                      
+                                                                                
+             RTVDTAARA  DTAARA(CHORUSDTA (11 10)) RTNVAR(&DLIB)                 
+                                                                                
+             CHKOBJ     OBJ(QTEMP/CMGCF) OBJTYPE(*FILE)                         
+             MONMSG     MSGID(CPF9801)  +                                       
+             EXEC(DO)                                                           
+             CRTDUPOBJ  OBJ(CMGCF) FROMLIB(*LIBL) OBJTYPE(*FILE) +              
+                          TOLIB(QTEMP)                                          
+             CRTDUPOBJ  OBJ(CMGCF00) FROMLIB(*LIBL) OBJTYPE(*FILE) +            
+                          TOLIB(QTEMP)                                          
+             CRTDUPOBJ  OBJ(CMGCF01) FROMLIB(*LIBL) OBJTYPE(*FILE) +            
+                          TOLIB(QTEMP)                                          
+             CRTDUPOBJ  OBJ(CMGCF02) FROMLIB(*LIBL) OBJTYPE(*FILE) +            
+                          TOLIB(QTEMP)                                          
+             CRTDUPOBJ  OBJ(CMGCF03) FROMLIB(*LIBL) OBJTYPE(*FILE) +            
+                          TOLIB(QTEMP)                                          
+             CRTDUPOBJ  OBJ(CMGCF04) FROMLIB(*LIBL) OBJTYPE(*FILE) +            
+                          TOLIB(QTEMP)                                          
+             ENDDO                                                              
+                                                                                
+/***         CLRPFM     FILE(QTEMP/CMGCF)***/                                   
+/* Can't use CLRPFM any more as it requires an exclusive object lock */         
+/* but CMGI05 can now end with LR off and thus retaining a lock... */           
+             OVRDBF     FILE(CMGCF00) TOFILE(QTEMP/CMGCF00)                     
+/* ...instead use a program to clear the workfile by deleting each */           
+/* record individually, BUT only when necessary */                              
+             IF         COND(&TFUN *EQ ' ' *OR &TFUN *EQ 'INIALL') +            
+                          THEN(DO)                                              
+             CALL       PGM(CMGA05)                                             
+             ENDDO                                                              
+             OVRDBF     FILE(CMGCF01) TOFILE(QTEMP/CMGCF01)                     
+             OVRDBF     FILE(CMGCF02) TOFILE(QTEMP/CMGCF02)                     
+             OVRDBF     FILE(CMGCF03) TOFILE(QTEMP/CMGCF03)                     
+             OVRDBF     FILE(CMGCF04) TOFILE(QTEMP/CMGCF04)                     
+                                                                                
+             CALL       PGM(CMGE05) PARM(&CNTN &F3KY &LR &TCDS &TCOD &TFUN +    
+                          &FTCD &ITEM &MVNO &ENTRYMODE)                         
+                                                                                
+             CLOF       OPNID(CMGCF00)                                          
+             MONMSG     MSGID(CPF4520)                                          
+                                                                                
+             DLTOVR     FILE(*ALL)                                              
+                                                                                
+             ENDPGM                                                             
+                                                                                
+/**********************************************/                                
+/* COPYRIGHT CHORUS APPLICATION SOFTWARE 2010 */ 
